@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/home"/>
+
+    <item android:title="Shop"
+        android:icon="@drawable/category"
+        android:id="@+id/category"/>
+    <item
+        android:id="@+id/fab"
+        android:title=""
+        android:enabled="false"/>
+
+    <item android:title="Wishlist"
+        android:icon="@drawable/wishlist"
+        android:id="@+id/wishlist"/>
+
+    <item android:title="Account"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:id="@+id/account"/>
+</menu>
