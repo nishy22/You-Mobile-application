@@ -9,10 +9,7 @@
     <item android:title="Shop"
         android:icon="@drawable/category"
         android:id="@+id/category"/>
-    <item
-        android:id="@+id/fab"
-        android:title=""
-        android:enabled="false"/>
+
 
     <item android:title="Wishlist"
         android:icon="@drawable/wishlist"
