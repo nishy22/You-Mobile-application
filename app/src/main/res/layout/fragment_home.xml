@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".Home">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/main"/>
+        android:layout_height="300dp"
+        app:cardBackgroundColor="@color/main"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="20dp">
+        
+        <com.denzcoskun.imageslider.ImageSlider
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/imageslider"
+            app:iss_period="1000"
+            app:iss_auto_cycle="true"
+            app:iss_delay="1000"
+            app:iss_corner_radius="20" app:iss_title_background="@drawable/gradient"
+            />
 
-</FrameLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <TableLayout
+        android:id="@+id/tabLayout"
+        android:layout_marginTop="370dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="299dp"
+        android:layout_marginTop="370dp"
+
+        />
+
+
+</RelativeLayout>
