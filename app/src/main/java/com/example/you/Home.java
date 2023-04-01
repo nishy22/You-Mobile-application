@@ -1,16 +1,14 @@
 package com.example.you;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TableLayout;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -21,8 +19,10 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 
 
+public class Home extends Fragment implements TabLayout.OnTabSelectedListener  {
 
-public class Home extends Fragment {
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
 
     @Override
@@ -44,7 +44,19 @@ public class Home extends Fragment {
 
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
 
+         tabLayout = tabLayout.findViewById(R.id.tabLayout);
+         tabLayout.addTab(tabLayout.newTab().setText("BEST SELL"));
+         tabLayout.addTab(tabLayout.newTab().setText("new"));
+         tabLayout.addTab(tabLayout.newTab().setText("face"));
+         tabLayout.addTab(tabLayout.newTab().setText("lips"));
+         tabLayout.addTab(tabLayout.newTab().setText("eyes"));
+         tabLayout.setTabGravity(tabLayout.GRAVITY_CENTER);
 
+
+         viewPager = viewPager.findViewById(R.id.viewPager);
+         SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+         viewPager.setAdapter(adapter);
+         tabLayout.setOnTabSelectedListener(this);
 
 
 
@@ -53,6 +65,24 @@ public class Home extends Fragment {
         // Inflate the layout for this fragment
         return  view;
     }
+
+
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
+    }
+
 
     // call onActivity create method
 

@@ -1,18 +1,24 @@
 package com.example.you.Adapter;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.you.BestSeller;
+import com.example.you.Eyes;
+import com.example.you.Face;
+import com.example.you.Lips;
+import com.example.you.NewArrive;
 
 public class SectionPageAdapter extends FragmentPagerAdapter {
+    int numCount;
 
-    private List<Fragment> fragmentList = new ArrayList<>();
-    private List<String> titleList = new ArrayList<>();
+
+    public SectionPageAdapter(@NonNull FragmentManager fm, int numCount){
+        super(fm);
+        this.numCount = numCount;
+    }
 
     public SectionPageAdapter(@NonNull FragmentManager fm) {
         super(fm);
@@ -21,22 +27,30 @@ public class SectionPageAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return fragmentList.get(position);
+        switch (position){
+            case 0:
+                NewArrive newArrive = new NewArrive();
+                return newArrive;
+
+            case 1:
+                BestSeller bestSeller = new BestSeller();
+                return bestSeller;
+
+            case 2:
+                Face face = new Face();
+                return face;
+            case 3:
+                Lips lips = new Lips();
+                return lips;
+            case 4:
+                Eyes eyes = new Eyes();
+                return eyes;
+        }
+        return null;
     }
 
     @Override
     public int getCount() {
-        return fragmentList.size();
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position){
-        return titleList.get(position);
-    }
-
-    public void addFragment(Fragment fragment, String title){
-        fragmentList.add(fragment);
-        titleList.add(title);
+        return numCount;
     }
 }
