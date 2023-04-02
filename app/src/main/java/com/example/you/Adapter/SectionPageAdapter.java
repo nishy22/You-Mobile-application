@@ -20,7 +20,8 @@ public class SectionPageAdapter extends FragmentPagerAdapter {
         this.numCount = numCount;
     }
 
-    public SectionPageAdapter(@NonNull FragmentManager fm) {
+    public SectionPageAdapter(@NonNull FragmentManager fm)
+    {
         super(fm);
     }
 
@@ -29,19 +30,21 @@ public class SectionPageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
+                BestSeller bestSeller = new BestSeller();
+                return bestSeller;
+            case 1:
                 NewArrive newArrive = new NewArrive();
                 return newArrive;
 
-            case 1:
-                BestSeller bestSeller = new BestSeller();
-                return bestSeller;
 
             case 2:
                 Face face = new Face();
                 return face;
+
             case 3:
                 Lips lips = new Lips();
                 return lips;
+
             case 4:
                 Eyes eyes = new Eyes();
                 return eyes;

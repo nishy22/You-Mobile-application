@@ -8,9 +8,11 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="299dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="370dp"
+        android:layout_marginBottom="-5dp"
         android:text="Best Selling"
         android:textAlignment="center"
-        android:textSize="30sp"
-        android:layout_centerInParent='true'/>
+        android:textSize="30sp" />
 </RelativeLayout>

@@ -21,8 +21,8 @@ import java.util.ArrayList;
 
 public class Home extends Fragment implements TabLayout.OnTabSelectedListener  {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    public Home() {
+    }
 
 
     @Override
@@ -30,6 +30,8 @@ public class Home extends Fragment implements TabLayout.OnTabSelectedListener  {
         super.onCreate(savedInstanceState);
 
     }
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,@Nullable Bundle savedInstanceState) {
@@ -44,32 +46,28 @@ public class Home extends Fragment implements TabLayout.OnTabSelectedListener  {
 
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
 
-         tabLayout = tabLayout.findViewById(R.id.tabLayout);
-         tabLayout.addTab(tabLayout.newTab().setText("BEST SELL"));
-         tabLayout.addTab(tabLayout.newTab().setText("new"));
-         tabLayout.addTab(tabLayout.newTab().setText("face"));
-         tabLayout.addTab(tabLayout.newTab().setText("lips"));
-         tabLayout.addTab(tabLayout.newTab().setText("eyes"));
-         tabLayout.setTabGravity(tabLayout.GRAVITY_CENTER);
+         tabLayout = view.findViewById(R.id.tabLayout);
+
+         tabLayout.addTab(tabLayout.newTab().setText("Best Selling"));
+         tabLayout.addTab(tabLayout.newTab().setText("New Arrivals"));
+         tabLayout.addTab(tabLayout.newTab().setText("Face"));
+         tabLayout.addTab(tabLayout.newTab().setText("Lips"));
+         tabLayout.addTab(tabLayout.newTab().setText("Eyes"));
+         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
 
 
-         viewPager = viewPager.findViewById(R.id.viewPager);
-         SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+         viewPager= view.findViewById(R.id.viewPager);
+         SectionPageAdapter adapter = new SectionPageAdapter(getChildFragmentManager(),tabLayout.getTabCount());
          viewPager.setAdapter(adapter);
          tabLayout.setOnTabSelectedListener(this);
-
-
-
-
-
-        // Inflate the layout for this fragment
+         // Inflate the layout for this fragment
         return  view;
     }
 
 
-
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
+        viewPager.setCurrentItem(tab.getPosition());
 
     }
 
