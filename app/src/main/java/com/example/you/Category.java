@@ -1,64 +1,99 @@
 package com.example.you;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Category#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.button.MaterialButton;
+
 public class Category extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public Category() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Category.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Category newInstance(String param1, String param2) {
-        Category fragment = new Category();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
+
+   MaterialButton button,button2,button3,button4,button5,button6;
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater,@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+       View view =  inflater.inflate(R.layout.fragment_category, container, false);
+       button = view.findViewById(R.id.button_Id);
+       button2 = view.findViewById(R.id.button_Id2);
+       button3 = view.findViewById(R.id.button_Id3);
+       button4 = view.findViewById(R.id.button_Id4);
+       button5 = view.findViewById(R.id.button_Id5);
+       button6 = view.findViewById(R.id.button_Id6);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BestSeller bestSeller = new BestSeller();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,bestSeller).commit();
+            }
+        });
+
+
+       button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewArrive newArrive = new NewArrive();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,newArrive).commit();
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Face face = new Face();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,face).commit();
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Lips lips = new Lips();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,lips).commit();
+            }
+        });
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Eyes eyes = new Eyes();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,eyes).commit();
+            }
+        });
+
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Sale sale = new Sale();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,sale).commit();
+            }
+        });
+
+
+
+
+
+
+
+       // Inflate the layout for this fragment
+        return view;
     }
+
+
+
 }

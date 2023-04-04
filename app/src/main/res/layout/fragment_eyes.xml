@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Eyes">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerInParent="true"
         android:text="Eyes"
+        android:gravity="center"
         android:textAlignment="center"
-        android:textSize="30sp"
-        android:layout_centerInParent='true'/>
+        android:textSize="30sp" />
 </RelativeLayout>
