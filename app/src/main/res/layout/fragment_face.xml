@@ -8,28 +8,12 @@
     tools:context=".Face">
 
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout2"
-        android:layout_width="match_parent"
-        app:tabMode="scrollable"
-        android:layout_height="wrap_content"/>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:text="face"
+       android:textAlignment="center"/>
 
 
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tabLayout2"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:text="face"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textSize="30sp" />
 
 </RelativeLayout>

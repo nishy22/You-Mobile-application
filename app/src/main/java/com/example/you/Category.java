@@ -55,24 +55,24 @@ public class Category extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Face face = new Face();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,face).commit();
+               FaceOverall faceOverall = new FaceOverall();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,faceOverall).commit();
             }
         });
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Lips lips = new Lips();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,lips).commit();
+                LipOverall lipOverall = new LipOverall();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,lipOverall).commit();
             }
         });
 
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Eyes eyes = new Eyes();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,eyes).commit();
+                EyeOverall eyeOverall = new EyeOverall();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,eyeOverall).commit();
             }
         });
 
