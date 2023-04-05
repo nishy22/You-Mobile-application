@@ -47,6 +47,8 @@ public class Home extends Fragment implements TabLayout.OnTabSelectedListener  {
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
 
          tabLayout = view.findViewById(R.id.tabLayout);
+         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+         tabLayout.setTabGravity(TabLayout.GRAVITY_START);
 
          tabLayout.addTab(tabLayout.newTab().setText("Best Selling"));
          tabLayout.addTab(tabLayout.newTab().setText("New Arrivals"));

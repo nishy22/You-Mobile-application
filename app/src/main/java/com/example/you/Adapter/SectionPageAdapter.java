@@ -22,6 +22,7 @@ public class SectionPageAdapter extends FragmentPagerAdapter {
 
     public SectionPageAdapter(@NonNull FragmentManager fm)
     {
+
         super(fm);
     }
 
@@ -48,12 +49,14 @@ public class SectionPageAdapter extends FragmentPagerAdapter {
             case 4:
                 Eyes eyes = new Eyes();
                 return eyes;
+
         }
         return null;
     }
 
     @Override
     public int getCount() {
+
         return numCount;
     }
 
