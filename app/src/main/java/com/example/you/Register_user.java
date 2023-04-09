@@ -1,6 +1,5 @@
 package com.example.you;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -48,15 +47,12 @@ public class Register_user extends Fragment {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getContext(),Account.class);
-            startActivity(intent);
-            if (getActivity() != null) {
-                getActivity().finish();
-            }
-
+        if (currentUser != null) {
+            Log_in log_in = new Log_in();
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,log_in).commit();
         }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,12 +70,13 @@ public class Register_user extends Fragment {
        textView.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                  Log_in log_in = new Log_in();
-                   getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,log_in).commit();
+                   if (getActivity() != null ) {
+                       Log_in log_in = new Log_in();
+                       requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, log_in).commit();
+                   }
                }
 
-
-       });
+    });
 
        buttonReg.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -98,13 +95,19 @@ public class Register_user extends Fragment {
                    return;
                }
                mAuth.createUserWithEmailAndPassword(email, password)
-                       .addOnCompleteListener(requireActivity(),new OnCompleteListener<AuthResult>() {
+                       .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                            @Override
                            public void onComplete(@NonNull Task<AuthResult> task) {
                                progressBar.setVisibility(View.GONE);
                                if (task.isSuccessful()) {
                                    Toast.makeText(getActivity(), "Account Created.",
                                            Toast.LENGTH_SHORT).show();
+
+
+                                       Log_in log_in = new Log_in();
+                                       requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, log_in).commit();
+
+
 
 
                                } else {

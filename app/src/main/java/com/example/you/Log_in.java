@@ -1,6 +1,5 @@
 package com.example.you;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -45,11 +44,8 @@ public class Log_in extends Fragment {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Intent intent = new Intent(getContext(),Account.class);
-            startActivity(intent);
-            if (getActivity() != null) {
-                getActivity().finish();
-            }
+          Account account = new Account();
+           requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, account).commit();
 
         }
     }
@@ -71,7 +67,7 @@ public class Log_in extends Fragment {
             @Override
             public void onClick(View v) {
                 Register_user register_user = new Register_user();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,register_user).commit();
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,register_user).commit();
             }
 
         });
@@ -95,7 +91,7 @@ public class Log_in extends Fragment {
                 }
 
                 mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(requireActivity(),new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
@@ -105,11 +101,9 @@ public class Log_in extends Fragment {
                                     Toast.makeText(getActivity(), "Authentication Successful.",
                                             Toast.LENGTH_SHORT).show();
 
-                                    Intent intent = new Intent(getContext(),Account.class);
-                                    startActivity(intent);
-                                    if (getActivity() != null) {
-                                        getActivity().finish();
-                                    }
+                                    Account account = new Account();
+                                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,account).commit();
+
 
                                 }
                                 else {
