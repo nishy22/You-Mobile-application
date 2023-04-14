@@ -76,31 +76,6 @@ public class Foundation extends Fragment  {
 
 
         });
-//        List<FoundationModel> foundationModels = new ArrayList<>();
-//        FirebaseDatabase.getInstance().getReference("Foundation")
-//                .addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        if(snapshot.exists()){
-//                            for(DataSnapshot foundationSnapshot: snapshot.getChildren()){
-//                                FoundationModel foundationModel = foundationSnapshot.getValue(FoundationModel.class);
-//                                foundationModel.setKey(foundationSnapshot.getKey());
-//                                foundationModels.add(foundationModel);
-//                            }
-//                            foundationLoadListener.onFoundationLoadSuccess(foundationModels);
-//                        }
-//                        else {
-//                            foundationLoadListener.onFoundationLoadFailed("can't find foundation");
-//                        }
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//                        foundationLoadListener.onFoundationLoadFailed(error.getMessage());
-//
-//                    }
-//                });
     }
 
     @Override

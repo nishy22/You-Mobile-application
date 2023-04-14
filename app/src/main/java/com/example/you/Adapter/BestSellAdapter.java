@@ -10,24 +10,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.you.Model.FoundationModel;
+import com.example.you.Model.BestSellModel;
 import com.example.you.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.FoundationViewHolder> {
+public class BestSellAdapter extends RecyclerView.Adapter<BestSellAdapter.BestSellerViewHolder> {
 
     private Context context;
-    private List<FoundationModel> foundationModelList;
-    private List<FoundationModel> filteredFoundationModelList;
+    private List<BestSellModel> bestSellModelList;
+    private List<BestSellModel> filteredBestSellModelList;
 
-    public static class FoundationViewHolder extends RecyclerView.ViewHolder {
+    public static class BestSellerViewHolder extends RecyclerView.ViewHolder {
         public ImageView mimage;
         public TextView shade;
         public TextView price;
-        public FoundationViewHolder(View itemView){
+        public BestSellerViewHolder(View itemView){
             super(itemView);
             mimage=itemView.findViewById(R.id.imageView);
             shade = itemView.findViewById(R.id.textShade);
@@ -37,27 +37,26 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
 
         }
     }
-    public FoundationAdapter(ArrayList<FoundationModel> list) {
-        foundationModelList = list;
-        this.filteredFoundationModelList = foundationModelList;
-    }
 
+    public BestSellAdapter(ArrayList<BestSellModel> list) {
+        bestSellModelList = list;
+        this.filteredBestSellModelList = bestSellModelList;
+    }
 
     @NonNull
     @Override
-    public FoundationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BestSellerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_foundation_view, parent, false);
-        return new FoundationAdapter.FoundationViewHolder(v);
+        return new BestSellAdapter.BestSellerViewHolder(v);
         //return new FoundationViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_foundation_view,parent,false));
     }
-
     @Override
-    public void onBindViewHolder(@NonNull FoundationViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BestSellAdapter.BestSellerViewHolder holder, int position) {
 
-        FoundationModel foundationModel=filteredFoundationModelList.get(position);
-        holder.shade.setText(foundationModel.getShade());
-        holder.price.setText("$"+foundationModel.getPrice());
-        Picasso.get().load(foundationModel.getImage()).into(holder.mimage);
+       BestSellModel bestSellModel=filteredBestSellModelList.get(position);
+        holder.shade.setText(bestSellModel.getShade());
+        holder.price.setText("$"+bestSellModel.getPrice());
+        Picasso.get().load(bestSellModel.getImage()).into(holder.mimage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +67,8 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
 
     @Override
     public int getItemCount() {
-        return foundationModelList.size();
+        return bestSellModelList.size();
     }
+
 
 }

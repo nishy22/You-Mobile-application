@@ -8,7 +8,7 @@
     tools:context=".Home">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -45,8 +45,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="299dp"
-        android:layout_marginTop="370dp"
+        android:layout_height="980dp"
         android:layout_below="@+id/tabLayout"
 
         />
