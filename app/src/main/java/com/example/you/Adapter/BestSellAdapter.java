@@ -27,16 +27,17 @@ public class BestSellAdapter extends RecyclerView.Adapter<BestSellAdapter.BestSe
         public ImageView mimage;
         public TextView shade;
         public TextView price;
+
         public BestSellerViewHolder(View itemView){
             super(itemView);
             mimage=itemView.findViewById(R.id.imageView);
             shade = itemView.findViewById(R.id.textShade);
             price = itemView.findViewById(R.id.textPrice);
 
-
-
         }
     }
+
+
 
     public BestSellAdapter(ArrayList<BestSellModel> list) {
         bestSellModelList = list;
@@ -63,6 +64,7 @@ public class BestSellAdapter extends RecyclerView.Adapter<BestSellAdapter.BestSe
 
             }
         });
+
     }
 
     @Override

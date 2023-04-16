@@ -1,9 +1,12 @@
 package com.example.you.Model;
 
-public class cartModel {
+public class CartModel {
     private String key,shade,image,price;
     private int quantity;
     private float totalPrice;
+
+    public CartModel(String shade, String price, int i, String image) {
+    }
 
     public String getKey() {
         return key;
