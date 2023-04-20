@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.category:
                     replaceFragment(new Category());
                     break;
+                case R.id.shadeUnity:
+                    replaceFragment(new Shade());
+                    break;
 
                 case R.id.wishlist:
                     replaceFragment(new Wishlist());

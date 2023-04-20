@@ -10,6 +10,11 @@
         android:icon="@drawable/category"
         android:id="@+id/category"/>
 
+    <item
+        android:title=""
+        android:icon="@drawable/icon"
+        android:id="@+id/shadeUnity" />
+
 
     <item android:title="Wishlist"
         android:icon="@drawable/wishlist"
