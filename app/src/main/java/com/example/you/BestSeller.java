@@ -85,7 +85,7 @@ public class BestSeller extends Fragment {
         mRecycleView = view.findViewById(R.id.recycler_bestSell);
         mRecycleView.setHasFixedSize(true);
         mManager = new LinearLayoutManager(getActivity());
-        mAdapter = new BestSellAdapter(list);
+        mAdapter = new BestSellAdapter(list, 0);
         mRecycleView.setLayoutManager(mManager);
         mRecycleView.setAdapter(mAdapter);
         loadBestSellerFromFirebase();
