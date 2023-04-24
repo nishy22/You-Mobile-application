@@ -3,17 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main"
+    android:background="@color/white"
     tools:context=".Wishlist">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Wishlist"
-        android:background="@color/white"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/main"/>
+        android:id="@+id/recycler_wishlist"
+        android:padding="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"/>
 
 </FrameLayout>
