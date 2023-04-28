@@ -13,8 +13,8 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.you.Model.BestSellModel;
+import com.example.you.Model.BlushModel;
 import com.example.you.Model.CartModel;
-import com.example.you.Model.FaceModel;
 import com.example.you.R;
 import com.example.you.utils.Helper;
 import com.squareup.picasso.Picasso;
@@ -22,65 +22,70 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FaceAdapter extends RecyclerView.Adapter<FaceAdapter.FaceViewHolder> {
-
+public class BlushAdapter extends RecyclerView.Adapter<BlushAdapter.BlushViewHolder> {
     private Context context;
-    private List<FaceModel> faceModelList;
-    private List<FaceModel> filteredFaceModelList;
+    private List<BlushModel> blushModelList;
+    private List<BlushModel> filteredBlushModelList;
 
-
-    public static class FaceViewHolder extends RecyclerView.ViewHolder {
+    public  static  class BlushViewHolder extends RecyclerView.ViewHolder{
         public ImageView mimage;
         public TextView shade;
         public TextView price;
         public AppCompatImageButton wishButton;
         public AppCompatImageButton cartbutton;
-    public FaceViewHolder(View itemView) {
-        super(itemView);
-        mimage = itemView.findViewById(R.id.imageView);
-        shade = itemView.findViewById(R.id.textShade);
-        price = itemView.findViewById(R.id.textPrice);
-        wishButton = itemView.findViewById(R.id.imageButtonWish);
-        cartbutton = itemView.findViewById(R.id.imageButtonCart);
+        public BlushViewHolder(View itemView){
+            super(itemView);
+            mimage=itemView.findViewById(R.id.imageView);
+            shade = itemView.findViewById(R.id.textShade);
+            price = itemView.findViewById(R.id.textPrice);
+            wishButton = itemView.findViewById(R.id.imageButtonWish);
+            cartbutton = itemView.findViewById(R.id.imageButtonCart);
+
+
 
 
         }
     }
 
-    public FaceAdapter(ArrayList<FaceModel> list) {
-        faceModelList= list;
-        this.filteredFaceModelList = faceModelList;
+    public BlushAdapter(ArrayList<BlushModel>list){
+        blushModelList = list;
+        this.filteredBlushModelList = blushModelList;
     }
+
     @NonNull
     @Override
-    public FaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BlushAdapter.BlushViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_foundation_view, parent, false);
-        return new FaceAdapter.FaceViewHolder(v);
+        return new BlushAdapter.BlushViewHolder(v);
         //return new FoundationViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_foundation_view,parent,false));
     }
-    @Override
-    public void onBindViewHolder(@NonNull FaceAdapter.FaceViewHolder holder, int position) {
 
-        FaceModel faceModel=filteredFaceModelList.get(position);
-        holder.shade.setText(faceModel.getShade());
-        holder.price.setText("$"+faceModel.getPrice());
+
+
+    @Override
+    public void onBindViewHolder(@NonNull BlushViewHolder holder, int position) {
+
+        BlushModel blushModel=filteredBlushModelList.get(position);
+        holder.shade.setText(blushModel.getShade());
+        holder.price.setText("$"+blushModel.getPrice());
         Helper helper = new Helper();
-        Picasso.get().load(faceModel.getImage()).into(holder.mimage);
+        Picasso.get().load(blushModel.getImage()).into(holder.mimage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
+
         });
         holder.wishButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 ArrayList<BestSellModel> favProducts;
                 BestSellModel item= new BestSellModel();
-                item.setImage(faceModel.getImage());
-                item.setKey(faceModel.getKey());
-                item.setPrice(faceModel.getPrice());
-                item.setShade(faceModel.getShade());
+                item.setImage(blushModel.getImage());
+                item.setKey(blushModel.getKey());
+                item.setPrice(blushModel.getPrice());
+                item.setShade(blushModel.getShade());
                 helper.loadFavouriteData(holder.wishButton.getContext().getSharedPreferences("shared preferences", 0));
                 favProducts = helper.getFavProducts();
                 favProducts.add(item);
@@ -94,12 +99,12 @@ public class FaceAdapter extends RecyclerView.Adapter<FaceAdapter.FaceViewHolder
 
                 ArrayList<CartModel> cartProducts;
                 CartModel item= new CartModel();
-                item.setImage(faceModel.getImage());
-                item.setKey(faceModel.getKey());
-                item.setPrice(faceModel.getPrice());
-                item.setShade(faceModel.getShade());
+                item.setImage(blushModel.getImage());
+                item.setKey(blushModel.getKey());
+                item.setPrice(blushModel.getPrice());
+                item.setShade(blushModel.getShade());
                 item.setQuantity(1);
-                item.setTotalPrice(1 * Float.parseFloat(faceModel.getPrice()));
+                item.setTotalPrice(1 * Float.parseFloat(blushModel.getPrice()));
                 helper.loadCartData(holder.wishButton.getContext().getSharedPreferences("shared preferences", 0));
                 cartProducts = helper.getCartItems();
                 cartProducts.add(item);
@@ -108,10 +113,9 @@ public class FaceAdapter extends RecyclerView.Adapter<FaceAdapter.FaceViewHolder
             }
         });
     }
-
     @Override
-    public int getItemCount() {
-        return faceModelList.size();
+    public int getItemCount(){
+        return blushModelList.size();
     }
 
 }

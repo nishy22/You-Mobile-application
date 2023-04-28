@@ -45,6 +45,7 @@ public class EyeOverall extends Fragment implements TabLayout.OnTabSelectedListe
 
         vieweye = view.findViewById(R.id.viewEye);
         EyesSecAdapter adapter = new EyesSecAdapter(getChildFragmentManager(),tabeye.getTabCount());
+        vieweye.setAdapter(adapter);
         tabeye.setOnTabSelectedListener(this);
 
 

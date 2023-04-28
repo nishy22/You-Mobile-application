@@ -5,12 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -37,11 +37,6 @@ public class Cart extends Fragment {
     Helper helper;
     ArrayList<CartModel> list = new ArrayList<>();
 
-
-
-
-    private String mParam1;
-    private String mParam2;
 
     private Cart cart;
     Button button;
@@ -81,6 +76,8 @@ public class Cart extends Fragment {
             //your codes here
 
         }
+        button = view.findViewById(R.id.btnCart);
+        cart = this;
         helper = new Helper();
         helper.loadCartData(this.getContext().getSharedPreferences("shared preferences", 0));
         list = helper.getCartItems();
@@ -106,19 +103,34 @@ public class Cart extends Fragment {
                         .setView(input)
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                Editable value = input.getText();
-                                HttpURLConnection urlConnection= null;
+
+                                String phoneNumber = input.getText().toString().trim();
+
+                                // Validate the phone number format
+                                if (phoneNumber.isEmpty() || !phoneNumber.matches("^\\+44\\d{10}$")) {
+                                    Toast.makeText(getContext(), "Please enter a valid UK phone number.", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                // Create the Notify.lk API URL with the user ID, API key, sender ID, phone number, and message
+                                String url = "https://app.notify.lk/api/v1/send?user_id=24813&api_key=rfQPjJZSAqHNLXRQEn1f&sender_id=NotifyDEMO&to=+447939813507&message=Your+order+has+been+placed.+Thank+you!";
+
+                                // Send the HTTP request to the Notify.lk API
+                                HttpURLConnection urlConnection = null;
                                 try {
-                                    URL url = new URL("https://app.notify.lk/api/v1/send?user_id=24813&api_key=rfQPjJZSAqHNLXRQEn1f&sender_id=NotifyDEMO&to="+value.toString()+"&message=You order has been placed. Thank you!");
-                                    urlConnection = (HttpURLConnection) url.openConnection();
-
+                                    URL apiEndpoint = new URL(url);
+                                    urlConnection = (HttpURLConnection) apiEndpoint.openConnection();
                                     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                                }
-                                catch(IOException e){
+                                } catch (IOException e) {
+                                    // Handle any errors
 
                                 }
+
                                 finally {
-                                    urlConnection.disconnect();
+                                    if (urlConnection != null) {
+                                        urlConnection.disconnect();
+                                    }
+
                                     Intent i = new Intent(cart.getContext(), Payment.class);
                                     startActivity(i);
                                 }

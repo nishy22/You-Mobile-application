@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Bronzer">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,5 +14,16 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="0dp"
         android:background="@drawable/bronzmain" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_bronzer"
+        android:padding="8dp"
+        app:spanCount="2"
+        android:layout_marginTop="320dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="50dp"/>
 
 </FrameLayout>

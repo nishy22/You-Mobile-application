@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.you.Model.BestSellModel;
 import com.example.you.Model.CartModel;
-import com.example.you.Model.FaceModel;
+import com.example.you.Model.ConcelarModel;
 import com.example.you.R;
 import com.example.you.utils.Helper;
 import com.squareup.picasso.Picasso;
@@ -22,50 +22,51 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FaceAdapter extends RecyclerView.Adapter<FaceAdapter.FaceViewHolder> {
-
+public class ConcelarAdapter  extends RecyclerView.Adapter<ConcelarAdapter.ConcelarViewHolder>{
     private Context context;
-    private List<FaceModel> faceModelList;
-    private List<FaceModel> filteredFaceModelList;
+    private List<ConcelarModel> concelarModelList;
+    private List<ConcelarModel> filteredConcelarModelList;
 
 
-    public static class FaceViewHolder extends RecyclerView.ViewHolder {
+    public static class ConcelarViewHolder extends RecyclerView.ViewHolder {
         public ImageView mimage;
         public TextView shade;
         public TextView price;
         public AppCompatImageButton wishButton;
         public AppCompatImageButton cartbutton;
-    public FaceViewHolder(View itemView) {
-        super(itemView);
-        mimage = itemView.findViewById(R.id.imageView);
-        shade = itemView.findViewById(R.id.textShade);
-        price = itemView.findViewById(R.id.textPrice);
-        wishButton = itemView.findViewById(R.id.imageButtonWish);
-        cartbutton = itemView.findViewById(R.id.imageButtonCart);
+
+        public ConcelarViewHolder(View itemView){
+            super(itemView);
+            mimage=itemView.findViewById(R.id.imageView);
+            shade = itemView.findViewById(R.id.textShade);
+            price = itemView.findViewById(R.id.textPrice);
+            wishButton = itemView.findViewById(R.id.imageButtonWish);
+            cartbutton = itemView.findViewById(R.id.imageButtonCart);
+
 
 
         }
     }
-
-    public FaceAdapter(ArrayList<FaceModel> list) {
-        faceModelList= list;
-        this.filteredFaceModelList = faceModelList;
+    public ConcelarAdapter(ArrayList<ConcelarModel> list) {
+        concelarModelList = list;
+        this.filteredConcelarModelList = concelarModelList;
     }
     @NonNull
     @Override
-    public FaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ConcelarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_foundation_view, parent, false);
-        return new FaceAdapter.FaceViewHolder(v);
+        return new ConcelarAdapter.ConcelarViewHolder(v);
         //return new FoundationViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_foundation_view,parent,false));
     }
-    @Override
-    public void onBindViewHolder(@NonNull FaceAdapter.FaceViewHolder holder, int position) {
 
-        FaceModel faceModel=filteredFaceModelList.get(position);
-        holder.shade.setText(faceModel.getShade());
-        holder.price.setText("$"+faceModel.getPrice());
+
+    @Override
+    public void onBindViewHolder(@NonNull ConcelarViewHolder holder, int position) {
+        ConcelarModel concelarModel= filteredConcelarModelList.get(position);
+        holder.shade.setText(concelarModel.getShade());
+        holder.price.setText("$"+concelarModel.getPrice());
         Helper helper = new Helper();
-        Picasso.get().load(faceModel.getImage()).into(holder.mimage);
+        Picasso.get().load(concelarModel.getImage()).into(holder.mimage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,10 +78,10 @@ public class FaceAdapter extends RecyclerView.Adapter<FaceAdapter.FaceViewHolder
             public void onClick(View v){
                 ArrayList<BestSellModel> favProducts;
                 BestSellModel item= new BestSellModel();
-                item.setImage(faceModel.getImage());
-                item.setKey(faceModel.getKey());
-                item.setPrice(faceModel.getPrice());
-                item.setShade(faceModel.getShade());
+                item.setImage(concelarModel.getImage());
+                item.setKey(concelarModel.getKey());
+                item.setPrice(concelarModel.getPrice());
+                item.setShade(concelarModel.getShade());
                 helper.loadFavouriteData(holder.wishButton.getContext().getSharedPreferences("shared preferences", 0));
                 favProducts = helper.getFavProducts();
                 favProducts.add(item);
@@ -94,12 +95,12 @@ public class FaceAdapter extends RecyclerView.Adapter<FaceAdapter.FaceViewHolder
 
                 ArrayList<CartModel> cartProducts;
                 CartModel item= new CartModel();
-                item.setImage(faceModel.getImage());
-                item.setKey(faceModel.getKey());
-                item.setPrice(faceModel.getPrice());
-                item.setShade(faceModel.getShade());
+                item.setImage(concelarModel.getImage());
+                item.setKey(concelarModel.getKey());
+                item.setPrice(concelarModel.getPrice());
+                item.setShade(concelarModel.getShade());
                 item.setQuantity(1);
-                item.setTotalPrice(1 * Float.parseFloat(faceModel.getPrice()));
+                item.setTotalPrice(1 * Float.parseFloat(concelarModel.getPrice()));
                 helper.loadCartData(holder.wishButton.getContext().getSharedPreferences("shared preferences", 0));
                 cartProducts = helper.getCartItems();
                 cartProducts.add(item);
@@ -111,7 +112,6 @@ public class FaceAdapter extends RecyclerView.Adapter<FaceAdapter.FaceViewHolder
 
     @Override
     public int getItemCount() {
-        return faceModelList.size();
+        return concelarModelList.size();
     }
-
 }
