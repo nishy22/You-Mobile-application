@@ -1,5 +1,6 @@
 package com.example.you;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigationView.setBackground(null);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+            Intent intent;
 
             switch (item.getItemId()) {
                 case R.id.home:
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new Category());
                     break;
                 case R.id.shadeUnity:
-                    replaceFragment(new Shade());
+                    intent = new Intent(MainActivity.this, UnityARActivity.class);
+                    startActivity(intent);
                     break;
 
                 case R.id.wishlist:

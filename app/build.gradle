@@ -9,14 +9,14 @@ android {
 
     defaultConfig {
         applicationId "com.example.you"
-        minSdk 24
+        minSdk 31
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
-
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk{
+            abiFilters 'armeabi-v7a','x86'
+        }
     }
 
     buildTypes {
@@ -71,6 +71,9 @@ dependencies {
     implementation 'com.stripe:stripe-android:20.24.0'
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.android.volley:volley:1.2.0'
+    implementation project(':unityLibrary')
+    implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('\\libs'), include: ['*.jar'])
+
 
 
 
