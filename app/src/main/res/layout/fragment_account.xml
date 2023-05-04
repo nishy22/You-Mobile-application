@@ -10,18 +10,45 @@
 
     <TextView
         android:id="@+id/user_details"
-        android:layout_width="144dp"
-        android:layout_height="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:textSize="20dp"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:text="wat to log in and register "
-        android:textColor="@color/main" />
+        android:layout_marginTop="50dp"
+        android:text="Welcome to YOU.."
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textColor="@color/black" />
+    <TextView
+        android:id="@+id/user_detail"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:textSize="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:text="Our vision.. To be the best in everyday accessible beauty...
+
+Our mission...To be our customers’first choice in up to the minute beauty, loved for value, choice, friendly and fun... "
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textColor="@color/black" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/splash"
+        android:padding="20dp"/>
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/loginAccount"
-        android:text="login"
-        android:layout_gravity="center"/>
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
+        android:text="Sign-in to your account." />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/discount"/>
 
     <Button
         android:layout_width="wrap_content"

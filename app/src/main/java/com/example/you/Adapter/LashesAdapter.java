@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.you.Model.BestSellModel;
 import com.example.you.Model.CartModel;
-import com.example.you.Model.FoundationModel;
+import com.example.you.Model.LashesModel;
 import com.example.you.R;
 import com.example.you.utils.Helper;
 import com.squareup.picasso.Picasso;
@@ -22,19 +22,18 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.FoundationViewHolder> {
-
+public class LashesAdapter extends RecyclerView.Adapter<LashesAdapter.LashViewHolder>{
     private Context context;
-    private List<FoundationModel> foundationModelList;
-    private List<FoundationModel> filteredFoundationModelList;
-
-    public static class FoundationViewHolder extends RecyclerView.ViewHolder {
+    private List<LashesModel> lashesModelList;
+    private List<LashesModel> filteredLashModelList;
+    public static class LashViewHolder extends RecyclerView.ViewHolder {
         public ImageView mimage;
         public TextView shade;
         public TextView price;
         public AppCompatImageButton wishButton;
         public AppCompatImageButton cartbutton;
-        public FoundationViewHolder(View itemView){
+
+        public LashViewHolder(View itemView){
             super(itemView);
             mimage=itemView.findViewById(R.id.imageView);
             shade = itemView.findViewById(R.id.textShade);
@@ -44,32 +43,28 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
 
 
 
-
-
         }
     }
-    public FoundationAdapter(ArrayList<FoundationModel> list) {
-        foundationModelList = list;
-        this.filteredFoundationModelList = foundationModelList;
+    public LashesAdapter(ArrayList<LashesModel> list) {
+        lashesModelList = list;
+        this.filteredLashModelList = lashesModelList;
     }
-
-
     @NonNull
     @Override
-    public FoundationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LashesAdapter.LashViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_foundation_view, parent, false);
-        return new FoundationAdapter.FoundationViewHolder(v);
+        return new LashesAdapter.LashViewHolder(v);
         //return new FoundationViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_foundation_view,parent,false));
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull FoundationViewHolder holder, int position) {
 
-        FoundationModel foundationModel=filteredFoundationModelList.get(position);
-        holder.shade.setText(foundationModel.getShade());
-        holder.price.setText("$"+foundationModel.getPrice());
+    @Override
+    public void onBindViewHolder(@NonNull LashesAdapter.LashViewHolder holder, int position) {
+        LashesModel lashesModel= filteredLashModelList.get(position);
+        holder.shade.setText(lashesModel.getShade());
+        holder.price.setText("$"+lashesModel.getPrice());
         Helper helper = new Helper();
-        Picasso.get().load(foundationModel.getImage()).into(holder.mimage);
+        Picasso.get().load(lashesModel.getImage()).into(holder.mimage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,10 +76,10 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
             public void onClick(View v){
                 ArrayList<BestSellModel> favProducts;
                 BestSellModel item= new BestSellModel();
-                item.setImage(foundationModel.getImage());
-                item.setKey(foundationModel.getKey());
-                item.setPrice(foundationModel.getPrice());
-                item.setShade(foundationModel.getShade());
+                item.setImage(lashesModel.getImage());
+                item.setKey(lashesModel.getKey());
+                item.setPrice(lashesModel.getPrice());
+                item.setShade(lashesModel.getShade());
                 helper.loadFavouriteData(holder.wishButton.getContext().getSharedPreferences("shared preferences", 0));
                 favProducts = helper.getFavProducts();
                 favProducts.add(item);
@@ -98,12 +93,12 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
 
                 ArrayList<CartModel> cartProducts;
                 CartModel item= new CartModel();
-                item.setImage(foundationModel.getImage());
-                item.setKey(foundationModel.getKey());
-                item.setPrice(foundationModel.getPrice());
-                item.setShade(foundationModel.getShade());
+                item.setImage(lashesModel.getImage());
+                item.setKey(lashesModel.getKey());
+                item.setPrice(lashesModel.getPrice());
+                item.setShade(lashesModel.getShade());
                 item.setQuantity(1);
-                item.setTotalPrice(1 * Float.parseFloat(foundationModel.getPrice()));
+                item.setTotalPrice(1 * Float.parseFloat(lashesModel.getPrice()));
                 helper.loadCartData(holder.wishButton.getContext().getSharedPreferences("shared preferences", 0));
                 cartProducts = helper.getCartItems();
                 cartProducts.add(item);
@@ -115,7 +110,6 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
 
     @Override
     public int getItemCount() {
-        return foundationModelList.size();
+        return lashesModelList.size();
     }
-
 }

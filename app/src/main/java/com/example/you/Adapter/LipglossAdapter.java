@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.you.Model.BestSellModel;
 import com.example.you.Model.CartModel;
-import com.example.you.Model.FoundationModel;
+import com.example.you.Model.LipglossModel;
 import com.example.you.R;
 import com.example.you.utils.Helper;
 import com.squareup.picasso.Picasso;
@@ -22,19 +22,21 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.FoundationViewHolder> {
+public class LipglossAdapter extends RecyclerView.Adapter<LipglossAdapter.LipglossViewHolder> {
 
     private Context context;
-    private List<FoundationModel> foundationModelList;
-    private List<FoundationModel> filteredFoundationModelList;
+    private List<LipglossModel> lipglossModelList;
+    private List<LipglossModel> filteredLipglossModelList;
 
-    public static class FoundationViewHolder extends RecyclerView.ViewHolder {
+
+    public static class LipglossViewHolder extends RecyclerView.ViewHolder {
         public ImageView mimage;
         public TextView shade;
         public TextView price;
         public AppCompatImageButton wishButton;
         public AppCompatImageButton cartbutton;
-        public FoundationViewHolder(View itemView){
+
+        public LipglossViewHolder(View itemView){
             super(itemView);
             mimage=itemView.findViewById(R.id.imageView);
             shade = itemView.findViewById(R.id.textShade);
@@ -44,32 +46,28 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
 
 
 
-
-
         }
     }
-    public FoundationAdapter(ArrayList<FoundationModel> list) {
-        foundationModelList = list;
-        this.filteredFoundationModelList = foundationModelList;
+    public LipglossAdapter(ArrayList<LipglossModel> list) {
+        lipglossModelList = list;
+        this.filteredLipglossModelList = lipglossModelList;
     }
-
-
     @NonNull
     @Override
-    public FoundationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LipglossAdapter.LipglossViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_foundation_view, parent, false);
-        return new FoundationAdapter.FoundationViewHolder(v);
+        return new LipglossAdapter.LipglossViewHolder(v);
         //return new FoundationViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_foundation_view,parent,false));
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull FoundationViewHolder holder, int position) {
 
-        FoundationModel foundationModel=filteredFoundationModelList.get(position);
-        holder.shade.setText(foundationModel.getShade());
-        holder.price.setText("$"+foundationModel.getPrice());
+    @Override
+    public void onBindViewHolder(@NonNull LipglossAdapter.LipglossViewHolder holder, int position) {
+        LipglossModel lipglossModel= filteredLipglossModelList.get(position);
+        holder.shade.setText(lipglossModel.getShade());
+        holder.price.setText("$"+lipglossModel.getPrice());
         Helper helper = new Helper();
-        Picasso.get().load(foundationModel.getImage()).into(holder.mimage);
+        Picasso.get().load(lipglossModel.getImage()).into(holder.mimage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,10 +79,10 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
             public void onClick(View v){
                 ArrayList<BestSellModel> favProducts;
                 BestSellModel item= new BestSellModel();
-                item.setImage(foundationModel.getImage());
-                item.setKey(foundationModel.getKey());
-                item.setPrice(foundationModel.getPrice());
-                item.setShade(foundationModel.getShade());
+                item.setImage(lipglossModel.getImage());
+                item.setKey(lipglossModel.getKey());
+                item.setPrice(lipglossModel.getPrice());
+                item.setShade(lipglossModel.getShade());
                 helper.loadFavouriteData(holder.wishButton.getContext().getSharedPreferences("shared preferences", 0));
                 favProducts = helper.getFavProducts();
                 favProducts.add(item);
@@ -98,12 +96,12 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
 
                 ArrayList<CartModel> cartProducts;
                 CartModel item= new CartModel();
-                item.setImage(foundationModel.getImage());
-                item.setKey(foundationModel.getKey());
-                item.setPrice(foundationModel.getPrice());
-                item.setShade(foundationModel.getShade());
+                item.setImage(lipglossModel.getImage());
+                item.setKey(lipglossModel.getKey());
+                item.setPrice(lipglossModel.getPrice());
+                item.setShade(lipglossModel.getShade());
                 item.setQuantity(1);
-                item.setTotalPrice(1 * Float.parseFloat(foundationModel.getPrice()));
+                item.setTotalPrice(1 * Float.parseFloat(lipglossModel.getPrice()));
                 helper.loadCartData(holder.wishButton.getContext().getSharedPreferences("shared preferences", 0));
                 cartProducts = helper.getCartItems();
                 cartProducts.add(item);
@@ -115,7 +113,6 @@ public class FoundationAdapter extends RecyclerView.Adapter<FoundationAdapter.Fo
 
     @Override
     public int getItemCount() {
-        return foundationModelList.size();
+        return lipglossModelList.size();
     }
-
 }

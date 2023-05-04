@@ -94,7 +94,9 @@ public class Cart extends Fragment {
         mAdapter = new CartAdapter(list);
         mRecycleView.setLayoutManager(mManager);
         mRecycleView.setAdapter(mAdapter);
+
         mAdapter.notifyDataSetChanged();
+
 
         PaymentConfiguration.init(requireContext(), PUBLISH_KEY);
         paymentSheet = new PaymentSheet(this,paymentSheetResult -> {
@@ -152,6 +154,8 @@ public class Cart extends Fragment {
     private void onPaymentResult(PaymentSheetResult paymentSheetResult) {
 
         if(paymentSheetResult instanceof PaymentSheetResult.Completed){
+
+
             Toast.makeText(getContext(), "Payment Success",Toast.LENGTH_SHORT).show();
 
         }
