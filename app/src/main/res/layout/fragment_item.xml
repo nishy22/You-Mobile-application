@@ -51,8 +51,8 @@
             android:id="@+id/imageButtonDelete"
             android:layout_width="52dp"
             android:layout_height="43dp"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="180dp"
+
+            android:layout_marginLeft="330dp"
             android:layout_marginTop="20dp"
             android:background="@color/main"
             app:srcCompat="@drawable/ic_delete_foreground" />

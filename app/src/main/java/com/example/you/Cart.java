@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -66,7 +67,7 @@ public class Cart extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-      View view = inflater.inflate(R.layout.fragment_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
         button = view.findViewById(R.id.btnCart);
         cart = this;
 
@@ -74,7 +75,7 @@ public class Cart extends Fragment {
 
     }
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
         if (SDK_INT > 8) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
@@ -118,7 +119,7 @@ public class Cart extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         try{
-                        JSONObject object = new JSONObject(response);
+                            JSONObject object = new JSONObject(response);
                             customerID = object.getString("id");
                             Toast.makeText(getContext(), customerID, Toast.LENGTH_SHORT).show();
                             getEphericalKey(customerID);
@@ -152,14 +153,11 @@ public class Cart extends Fragment {
     }
 
     private void onPaymentResult(PaymentSheetResult paymentSheetResult) {
-
         if(paymentSheetResult instanceof PaymentSheetResult.Completed){
-
-
             Toast.makeText(getContext(), "Payment Success",Toast.LENGTH_SHORT).show();
-
         }
     }
+
 
     private void getEphericalKey(String customerID) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
@@ -263,13 +261,13 @@ public class Cart extends Fragment {
     }
 
     private void PaymentFlow() {
-
         paymentSheet.presentWithPaymentIntent(
-                ClientSecret, new PaymentSheet.Configuration("YOU Company",
-                        new PaymentSheet.CustomerConfiguration(
-                                customerID,
-                                EphericalKey
-                        ))
+                ClientSecret,new PaymentSheet.Configuration("YOU COMPANY"
+                        , new PaymentSheet.CustomerConfiguration(
+                           customerID,
+                           EphericalKey
+                ))
         );
+
     }
 }
