@@ -47,8 +47,6 @@ public class Cart extends Fragment {
     String customerID;
     String EphericalKey;
     String ClientSecret;
-    public static final String ACCOUNT_SID = System.getenv("AC85a64cae7eb2e29b1807f61fd51fefc0");
-    public static final String AUTH_TOKEN = System.getenv("42b0b013e757944a9d75dbdcddf0ec3e");
 
     View view;
     Helper helper;
@@ -156,14 +154,7 @@ public class Cart extends Fragment {
 
     private void onPaymentResult(PaymentSheetResult paymentSheetResult) {
         if(paymentSheetResult instanceof PaymentSheetResult.Completed){
-            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-            Message message = Message.creator(
-                            new com.twilio.type.PhoneNumber("+447939813507"),
-                            new com.twilio.type.PhoneNumber("+447360272598"),
-                            "Where's Wallace?")
-                    .create();
 
-            System.out.println(message.getSid());
             Toast.makeText(getContext(), "Payment Success",Toast.LENGTH_SHORT).show();
         }
     }
